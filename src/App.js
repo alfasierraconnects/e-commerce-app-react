@@ -1,10 +1,10 @@
 import React from "react";
-import ProductList from "./components/ProductList";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <div>
-      <ProductList />
+      <Navbar />
     </div>
   );
 };
