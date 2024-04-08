@@ -1,6 +1,5 @@
 import React from "react";
 import hero_image from "./Assets/hero_image.png";
-import arrow from "./Assets/arrow.png";
 import hand_icon from "./Assets/hand_icon.png";
 
 const Hero = () => {
@@ -24,11 +23,9 @@ const Hero = () => {
             <p className="text-lg font-medium sm:text-2xl">
               Latest collections
             </p>
-            <img
-              className="w-3 h-3 sm:w-5 sm:h-5 ml-4 animate-bounce"
-              src={arrow}
-              alt=""
-            />
+            <p className="mt-2 ml-4 animate-bounce">
+              <ion-icon size="large" name="arrow-forward-outline"></ion-icon>
+            </p>
           </div>
         </div>
         {/* Hero Right Section */}
