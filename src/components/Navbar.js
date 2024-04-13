@@ -69,7 +69,12 @@ const Navbar = () => {
             Login
           </Link>
           <div className="relative pt-2">
-            <Link to="/cart">
+            <Link
+              to="/cart"
+              onClick={() => {
+                setMenu("");
+              }}
+            >
               <ion-icon size="large" name="cart-outline"></ion-icon>
             </Link>
             <p className="absolute top-0 -right-1 h-5 w-5 rounded-full bg-red-700 text-white flex justify-center items-center">
