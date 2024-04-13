@@ -1,12 +1,12 @@
 import React from "react";
-import footer_logo from "./Assets/logo_big.png";
-import instagram_icon from "./Assets/instagram_icon.png";
-import whatsapp_icon from "./Assets/whatsapp_icon.png";
-import pinterest_icon from "./Assets/pintester_icon.png";
+import footer_logo from "../Assets/logo_big.png";
+import instagram_icon from "../Assets/instagram_icon.png";
+import whatsapp_icon from "../Assets/whatsapp_icon.png";
+import pinterest_icon from "../Assets/pintester_icon.png";
 
 const Footer = () => {
   return (
-    <div className="text-gray-800 py-8 px-4 bg-fuchsia-100">
+    <div className="text-gray-800 py-8 px-4 mt-10 bg-fuchsia-100">
       <div className="flex items-center justify-center mb-6">
         <img src={footer_logo} alt="Shopper" className="w-12 h-12 mr-4" />
         <p className="text-xl font-bold">SHOPPER</p>
