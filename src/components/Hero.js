@@ -1,25 +1,17 @@
 import React from "react";
 import hero_image from "./Assets/hero_image.png";
-import hand_icon from "./Assets/hand_icon.png";
 
 const Hero = () => {
   return (
-    <div className=" bg-fuchsia-100">
-      <div className=" md:w-[85%] m-auto sm:flex">
-        {" "}
-        {/* Hero Left Section */}
-        <div className="flex flex-col justify-center items-start sm:w-1/2 p-8 sm:gap-8">
-          <h2 className="font-semibold mb-4 sm:text-2xl">NEW ARRIVALS ONLY</h2>
-          <p className="font-semibold text-5xl mb-4 sm:text-8xl">
-            <div className="flex items-center gap-2 sm:gap-4">
-              new
-              <img className="h-6 sm:h-16" src={hand_icon} alt="" />
-            </div>
-            <div>collections</div>
-            <div>for everyone</div>
+    <div className="bg-gradient-to-b from-white to-fuchsia-300 ">
+      <div className=" md:w-[85%] m-auto flex justify-between">
+        <div className="flex flex-col justify-center items-start w-[40%] p-8 gap-10">
+          <h2 className="font-semibold text-3xl">NEW ARRIVALS ONLY</h2>
+          <p className="font-semibold mb-8 text-7xl">
+            new collections for everyone
           </p>
 
-          <div className="mt-4 flex rounded-full bg-red-600 text-white px-10 py-2.5 items-center sm:px-12">
+          <div className="flex rounded-full bg-red-500 hover:bg-red-600 cursor-pointer active:bg-red-500 text-white px-10 py-1 items-center">
             <p className="text-lg font-medium sm:text-2xl">
               Latest collections
             </p>
@@ -28,9 +20,13 @@ const Hero = () => {
             </p>
           </div>
         </div>
-        {/* Hero Right Section */}
-        <div className="sm:w-1/2">
-          <img className="w-[80%] m-auto" src={hero_image} alt="" />
+        <div className="w-1/2 h-[calc(90vh)] relative">
+          <div className="w-full h-full bg-fuchsia-900 shadow-xl animate-blob"></div>
+          <img
+            className="w-[75%] m-auto absolute top-0 left-20"
+            src={hero_image}
+            alt=""
+          />
         </div>
       </div>
     </div>
