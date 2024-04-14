@@ -12,7 +12,7 @@ const NewCollections = () => {
       <hr className="mb-4" />
       <div className="grid grid-cols-4 gap-6">
         {new_collection.map((el, i) => (
-          <Link to={`/product/${el.id}`}>
+          <Link to={`/product/${el.id}`} onClick={window.scrollTo(0, 0)}>
             <Item
               key={i}
               id={el.id}

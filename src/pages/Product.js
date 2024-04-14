@@ -9,7 +9,7 @@ const Product = () => {
   const { all_product } = useContext(ShopContext);
   const { productId } = useParams();
 
-  const product = all_product.find((el) => el.id === Number(productId));
+  const product = all_product.find((el) => el.id === productId);
 
   if (!product) {
     return <div>Product not found</div>;

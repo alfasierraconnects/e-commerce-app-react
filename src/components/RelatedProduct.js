@@ -19,7 +19,11 @@ const RelatedProduct = ({ category }) => {
       <hr className="mb-4" />
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {filteredProducts.map((el) => (
-          <Link to={`/product/${el.id}`} key={el.id}>
+          <Link
+            to={`/product/${el.id}`}
+            key={el.id}
+            onClick={window.scrollTo(0, 0)}
+          >
             <Item
               id={el.id}
               image={el.image}
