@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import data_product from "../Assets/data";
 import Item from "./Item";
 
@@ -11,14 +12,16 @@ const Popular = () => {
       <hr className="mb-4" />
       <div className="grid grid-cols-4 gap-6">
         {data_product.map((el, i) => (
-          <Item
-            key={i}
-            id={el.id}
-            image={el.image}
-            name={el.name}
-            new_price={el.new_price}
-            old_price={el.old_price}
-          />
+          <Link to={`/product/${el.id}`}>
+            <Item
+              key={i}
+              id={el.id}
+              image={el.image}
+              name={el.name}
+              new_price={el.new_price}
+              old_price={el.old_price}
+            />
+          </Link>
         ))}
       </div>
     </div>

@@ -28,7 +28,7 @@ const App = () => {
           />
           <Route
             path="/kids"
-            element={<ShopCategory category="kid" banner={kids_banner} />}
+            element={<ShopCategory category="kids" banner={kids_banner} />}
           />
           <Route path="/product" element={<Product />}>
             <Route path=":productId" element={<Product />} />
