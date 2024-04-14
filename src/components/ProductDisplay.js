@@ -1,30 +1,29 @@
 import React, { useState } from "react";
+import ImageDisplay from "./ImageDisplay";
 
 const ProductDisplay = ({ product }) => {
-  const { name, category, image, new_price, old_price } = product;
+  const {
+    name,
+    category,
+    image,
+    new_price,
+    old_price,
+    rating,
+    ratings_count,
+    product_details,
+    size_fit,
+    material_care,
+  } = product;
   const [size, setSize] = useState("S");
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex flex-wrap">
+      <div className="flex">
         {/* Image Options */}
-        <div className="flex gap-4 w-full mb-4 md:w-1/2 md:pr-4">
-          <div className="flex flex-col gap-2">
-            {/* Image Options Here (thumbnails or color options) */}
-            <img src={image} alt={name} className="rounded-lg border" />
-            <img src={image} alt={name} className="rounded-lg border" />
-            <img src={image} alt={name} className="rounded-lg border" />
-          </div>
-          {/* Main Product Image */}
-          <img
-            src={image}
-            alt={name}
-            className="h-[60%] rounded-lg shadow-lg mb-4"
-          />
-        </div>
+        <ImageDisplay image={image} />
 
         {/* Product Details */}
-        <div className="w-full md:w-1/2 md:pl-8">
+        <div className="w-full md:pl-10">
           {/* Product Name */}
           <h1 className="text-3xl font-semibold mb-4">{name}</h1>
 
@@ -46,9 +45,9 @@ const ProductDisplay = ({ product }) => {
             <span className="text-yellow-400 text-xl">
               <ion-icon name="star"></ion-icon>
             </span>
-            <span className="text-lg font-bold mx-2">4.3</span>
+            <span className="text-lg font-bold mx-2">{rating}</span>
             <span className="text-gray-600">|</span>
-            <span className="ml-2">132 Ratings</span>
+            <span className="ml-2">{ratings_count} Ratings</span>
           </div>
 
           {/* Size Selector */}
@@ -96,35 +95,13 @@ const ProductDisplay = ({ product }) => {
           {/* Product Description */}
           <div className="my-6">
             <h2 className="text-xl font-semibold mb-2">Product Details</h2>
-            <p>Taupe woven cargos</p>
-            <p>Regular fit</p>
-            <p>High-rise</p>
-            <p>Length: regular</p>
-            <p>Pattern: solid</p>
-            <p>Flat-front, with no pleats design</p>
-            <p>Feature: plain</p>
-            <p>4 pockets</p>
-          </div>
+            <p>{product_details}</p>
 
-          <hr className="my-6" />
+            <h2 className="text-lg font-semibold mt-2">Size & Fit</h2>
+            <p>{size_fit}</p>
 
-          {/* Size & Fit */}
-          <div className="my-6">
-            <h2 className="text-xl font-semibold mb-2">Size & Fit</h2>
-            <p>Regular Fit</p>
-            <p>Size worn by the model: M</p>
-            <p>Waist: 29.5''</p>
-            <p>Hips: 39''</p>
-            <p>Height: 5'6"</p>
-          </div>
-
-          <hr className="my-6" />
-
-          {/* Material & Care */}
-          <div className="my-6">
-            <h2 className="text-xl font-semibold mb-2">Material & Care</h2>
-            <p>100% Cotton</p>
-            <p>Machine Wash</p>
+            <h2 className="text-lg font-semibold mt-2">Material & Care</h2>
+            <p>{material_care}</p>
           </div>
         </div>
       </div>
