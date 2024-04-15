@@ -1,34 +1,18 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const navigate = useNavigate();
 
-  const { cartItems, all_product, removeFromCart } = useContext(ShopContext);
-
-  const [subTotal, setSubTotal] = useState(0);
-  const [deliveryFee, setDeliveryFee] = useState(0);
-  const [total, setTotal] = useState(0);
-
-  useEffect(() => {
-    let newSubTotal = 0;
-    let newDeliveryFee = 0;
-
-    cartItems.forEach((el) => {
-      const product = all_product.find((item) => item.id === el.ItemId);
-      if (product) {
-        newSubTotal += product.new_price * el.quantity;
-        newDeliveryFee += el.quantity * 30;
-      }
-    });
-
-    const newTotal = newSubTotal + newDeliveryFee;
-
-    setSubTotal(newSubTotal);
-    setDeliveryFee(newDeliveryFee);
-    setTotal(newTotal);
-  }, [cartItems, all_product]);
+  const {
+    cartItems,
+    all_product,
+    removeFromCart,
+    subTotal,
+    deliveryFee,
+    total,
+  } = useContext(ShopContext);
 
   return (
     <div className="container mx-auto p-4 my-20">
@@ -101,7 +85,7 @@ const Cart = () => {
             </div>
             <button
               onClick={() => navigate("/checkout")}
-              className=" bg-red-500 text-white mt-4 px-8 py-2 rounded-sm hover:bg-red-600 active:shadow-lg active:bg-red-500 disabled:hover:bg-red-500 disabled:active:shadow-none disabled:opacity-50 disabled:cursor-not-allowed"
+              className=" bg-red-500 text-white mt-4 px-8 py-2 rounded-full hover:bg-red-600 active:shadow-lg active:bg-red-500 disabled:hover:bg-red-500 disabled:active:shadow-none disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={total === 0}
             >
               PROCEED TO CHECKOUT
@@ -113,11 +97,11 @@ const Cart = () => {
             </p>
             <div className="flex">
               <input
-                className="bg-gray-200 font-semibold text-gray-600 rounded-l p-2 focus:outline-none"
+                className="bg-gray-200 font-semibold text-gray-600 rounded-l-full p-2 focus:outline-none"
                 type="text"
                 placeholder="promo code"
               />
-              <button className="bg-black font-semibold text-gray-100 hover:text-white rounded-r py-2 px-8 hover:bg-gray-900 active:bg-black">
+              <button className="bg-black -ml-3 font-semibold text-gray-100 hover:text-white rounded-full py-2 px-8 hover:bg-gray-900 active:bg-black">
                 Submit
               </button>
             </div>

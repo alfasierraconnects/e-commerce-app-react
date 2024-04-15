@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import logo from "../Assets/logo.png";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
@@ -6,17 +6,7 @@ import { ShopContext } from "../context/ShopContext";
 const Navbar = () => {
   const menuUnderline = `border-x-0 border-t-0 border-b-2 border-gray-900 pb-2`;
   const [menu, setMenu] = useState("shop");
-  const { cartItems } = useContext(ShopContext);
-  const [totalQuantity, setTotalQuantity] = useState(0);
-
-  useEffect(() => {
-    const newTotalQuantity = cartItems.reduce(
-      (acc, el) => acc + el.quantity,
-      0
-    );
-
-    setTotalQuantity(newTotalQuantity);
-  }, [cartItems]);
+  const { totalQuantity } = useContext(ShopContext);
 
   return (
     <div className="text-gray-900 p-4 font-semibold text-lg">
