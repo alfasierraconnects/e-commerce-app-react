@@ -12,9 +12,12 @@ const Popular = () => {
       <hr className="mb-4" />
       <div className="grid grid-cols-4 gap-6">
         {data_product.map((el, i) => (
-          <Link to={`/product/${el.id}`} onClick={window.scrollTo(0, 0)}>
+          <Link
+            to={`/product/${el.id}`}
+            key={el.id}
+            onClick={window.scrollTo(0, 0)}
+          >
             <Item
-              key={i}
               id={el.id}
               image={el.image}
               name={el.name}

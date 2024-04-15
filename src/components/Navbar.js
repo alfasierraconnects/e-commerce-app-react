@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import logo from "../Assets/logo.png";
 import { Link } from "react-router-dom";
+import { ShopContext } from "../context/ShopContext";
 
 const Navbar = () => {
   const menuUnderline = `border-x-0 border-t-0 border-b-2 border-gray-900 pb-2`;
   const [menu, setMenu] = useState("shop");
+  const { cartItems } = useContext(ShopContext);
+  const [totalQuantity, setTotalQuantity] = useState(0);
+
+  useEffect(() => {
+    const newTotalQuantity = cartItems.reduce(
+      (acc, el) => acc + el.quantity,
+      0
+    );
+
+    setTotalQuantity(newTotalQuantity);
+  }, [cartItems]);
 
   return (
     <div className="text-gray-900 p-4 font-semibold text-lg">
@@ -78,7 +90,7 @@ const Navbar = () => {
               <ion-icon size="large" name="cart-outline"></ion-icon>
             </Link>
             <p className="absolute top-0 -right-1 h-5 w-5 rounded-full bg-red-700 text-white flex justify-center items-center">
-              0
+              {totalQuantity}
             </p>
           </div>
         </div>

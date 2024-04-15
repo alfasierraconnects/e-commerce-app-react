@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ImageDisplay from "./ImageDisplay";
+import { ShopContext } from "../context/ShopContext";
 
 const ProductDisplay = ({ product }) => {
   const {
+    id,
     name,
     category,
     image,
@@ -15,6 +17,8 @@ const ProductDisplay = ({ product }) => {
     material_care,
   } = product;
   const [size, setSize] = useState("S");
+
+  const { addToCart } = useContext(ShopContext);
 
   return (
     <div className="container mx-auto p-4">
@@ -88,7 +92,10 @@ const ProductDisplay = ({ product }) => {
           </div>
 
           {/* Buy Button */}
-          <button className="bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600 active:shadow-xl">
+          <button
+            onClick={() => addToCart(id, size)}
+            className="bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600 active:shadow-xl"
+          >
             Add To Cart
           </button>
 

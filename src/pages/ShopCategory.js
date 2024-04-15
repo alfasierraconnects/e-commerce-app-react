@@ -28,9 +28,9 @@ const ShopCategory = ({ banner, category }) => {
       {/* Product List */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {filteredProducts.map((product) => (
-          <Link to={`/product/${product.id}`}>
+          <Link to={`/product/${product.id}`} key={product.id}>
             <Item
-              key={product.id}
+              id={product.id}
               image={product.image}
               name={product.name}
               new_price={product.new_price}
