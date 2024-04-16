@@ -18,7 +18,7 @@ export const AuthContextProvider = (props) => {
     setLoading(true);
     try {
       // eslint-disable-next-line
-      let response = await account.createEmailPasswordSession(
+      let response = await account.createEmailSession(
         userInfo.email,
         userInfo.password
       );
