@@ -8,5 +8,6 @@ client
 
 export const account = new Account(client);
 export const databases = new Databases(client);
+// export const query = new Query(client);
 
 export default client;

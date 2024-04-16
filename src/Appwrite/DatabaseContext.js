@@ -1,19 +1,23 @@
-import React from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { databases } from "./appwriteConfig";
-import { ID } from "appwrite";
+import { Query } from "appwrite";
+
+export const DatabaseContext = createContext(null);
 
 const DatabaseContextProvider = (props) => {
-  const addDocuments = () => {
-    const promise = databases.createDocument(
-      "<DATABASE_ID>",
-      "<COLLECTION_ID>",
-      ID.unique(),
-      { title: "Hamlet" }
+  const [all_product, setall_product] = useState([]);
+
+  const listDocument = () => {
+    let promise = databases.listDocuments(
+      "661d505639bdd3d339b0",
+      "661d51527496d9d30744",
+      [Query.limit(40)]
     );
 
     promise.then(
       function (response) {
         console.log(response);
+        setall_product(response.documents);
       },
       function (error) {
         console.log(error);
@@ -21,7 +25,12 @@ const DatabaseContextProvider = (props) => {
     );
   };
 
-  const contextValue = { addDocuments };
+  useEffect(() => {
+    listDocument();
+    // eslint-disable-next-line
+  }, []);
+
+  const contextValue = { all_product };
 
   return (
     <DatabaseContext.Provider value={contextValue}>

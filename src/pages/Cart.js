@@ -27,7 +27,7 @@ const Cart = () => {
           <p className="col-span-1">Remove</p>
         </div>
         <hr className="border-b-2" />
-        {console.log(cartItems)}
+        {/* {console.log(cartItems)} */}
         {cartItems.map((item, i) => {
           const product = all_product.find(
             (el) => el.id === item.ItemId && item.quantity > 0

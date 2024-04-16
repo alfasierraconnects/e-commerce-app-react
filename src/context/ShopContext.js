@@ -1,5 +1,5 @@
-import React, { useState, createContext, useEffect } from "react";
-import all_product from "../Assets/all_product";
+import React, { useState, createContext, useEffect, useContext } from "react";
+import { DatabaseContext } from "../Appwrite/DatabaseContext";
 
 export const ShopContext = createContext(null);
 
@@ -9,6 +9,7 @@ const ShopContextProvider = (props) => {
   const [subTotal, setSubTotal] = useState(0);
   const [deliveryFee, setDeliveryFee] = useState(0);
   const [total, setTotal] = useState(0);
+  const { all_product } = useContext(DatabaseContext);
 
   useEffect(() => {
     let newSubTotal = 0;
@@ -27,7 +28,7 @@ const ShopContextProvider = (props) => {
     setSubTotal(newSubTotal);
     setDeliveryFee(newDeliveryFee);
     setTotal(newTotal);
-  }, [cartItems]);
+  }, [cartItems, all_product]);
 
   useEffect(() => {
     const newTotalQuantity = cartItems.reduce(
