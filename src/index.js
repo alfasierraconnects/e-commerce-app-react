@@ -8,13 +8,13 @@ import DatabaseContextProvider from "./Appwrite/DatabaseContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <AuthContextProvider>
-    <DatabaseContextProvider>
-      <ShopContextProvider>
+  <DatabaseContextProvider>
+    <ShopContextProvider>
+      <AuthContextProvider>
         <React.StrictMode>
           <App />
         </React.StrictMode>
-      </ShopContextProvider>
-    </DatabaseContextProvider>
-  </AuthContextProvider>
+      </AuthContextProvider>
+    </ShopContextProvider>
+  </DatabaseContextProvider>
 );

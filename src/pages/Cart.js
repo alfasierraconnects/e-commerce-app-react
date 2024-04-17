@@ -32,14 +32,11 @@ const Cart = () => {
           const product = all_product.find(
             (el) => el.id === item.ItemId && item.quantity > 0
           );
-          console.log(product);
+          // console.log(product);
           if (product) {
             return (
-              <div>
-                <div
-                  key={i}
-                  className="grid grid-cols-12 gap-2 m-2 items-center font-semibold"
-                >
+              <div key={i}>
+                <div className="grid grid-cols-12 gap-2 m-2 items-center font-semibold">
                   <img
                     className="h-10 w-auto col-span-2 object-contain"
                     src={product.image}
