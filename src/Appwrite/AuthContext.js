@@ -1,11 +1,10 @@
 import { useContext, createContext, useEffect, useState } from "react";
 import { account } from "./appwriteConfig";
-// import { useNavigate } from "react-router-dom";
+import { ID } from "appwrite";
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = (props) => {
-  // const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
 
@@ -38,6 +37,27 @@ export const AuthContextProvider = (props) => {
     setUser(null);
   };
 
+  const signupUser = async (userInfo) => {
+    setLoading(true);
+    try {
+      let response = await account.create(
+        ID.unique(),
+        userInfo.email,
+        userInfo.password,
+        userInfo.name,
+        userInfo.phone
+      );
+      console.log(response);
+
+      await account.createEmailSession(userInfo.email, userInfo.password);
+      let accountDetails = await account.get();
+      setUser(accountDetails);
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+  };
+
   const checkUserStatus = async () => {
     setLoading(true);
     try {
@@ -54,6 +74,7 @@ export const AuthContextProvider = (props) => {
     user,
     loginUser,
     logoutUser,
+    signupUser,
     checkUserStatus,
   };
 

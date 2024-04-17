@@ -1,20 +1,29 @@
-import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useRef, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../Appwrite/AuthContext";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { signupUser } = useAuth();
+  const { user, signupUser } = useAuth();
   const signupValues = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const name = signupValues.current.name.value;
     const email = signupValues.current.email.value;
+    const phone = signupValues.current.phone.value;
     const password = signupValues.current.password.value;
 
-    const userInfo = { email, password };
+    const userInfo = { name, email, phone, password };
     signupUser(userInfo);
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+    // eslint-disable-next-line
+  }, [user]);
 
   return (
     <div className="flex justify-center items-center">
@@ -38,6 +47,7 @@ const Signup = () => {
               <ion-icon name="person-outline"></ion-icon>
             </p>
             <input
+              name="name"
               className="flex-1 p-2 border-2 rounded-md outline-none focus:border-fuchsia-600"
               type="text"
               placeholder="Your Name"
@@ -54,6 +64,19 @@ const Signup = () => {
               className="flex-1 p-2 border-2 rounded-md outline-none focus:border-fuchsia-600"
               type="email"
               placeholder="Your Email"
+              required
+            />
+          </div>
+
+          <div className="flex items-center">
+            <p className="text-2xl text-gray-700 p-1">
+              <ion-icon name="call-outline"></ion-icon>
+            </p>
+            <input
+              name="phone"
+              className="flex-1 p-2 border-2 rounded-md outline-none focus:border-fuchsia-600"
+              type="tel"
+              placeholder="Your Phone Number"
               required
             />
           </div>
@@ -87,11 +110,14 @@ const Signup = () => {
           >
             Create Account
           </button>
-        </div>
 
-        <p className="mt-6 text-center text-gray-600 hover:text-fuchsia-700 hover:font-semibold cursor-pointer">
-          Already have an account?
-        </p>
+          <Link
+            to="/login"
+            className="text-center text-gray-600 hover:text-fuchsia-700 hover:font-semibold cursor-pointer"
+          >
+            Already have an account?
+          </Link>
+        </div>
       </form>
     </div>
   );
