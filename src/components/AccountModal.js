@@ -30,7 +30,7 @@ const AccountModal = () => {
       {modalOpen && (
         <div
           ref={modalRef}
-          className="rounded-md overflow-hidden bg-fuchsia-300 absolute right-0 top-2 z-50 whitespace-nowrap"
+          className="rounded-md absolute overflow-hidden bg-fuchsia-300 right-0 top-2 z-10 whitespace-nowrap animate-modal-open"
         >
           <div className="flex justify-between items-center bg-fuchsia-950 text-white pl-4">
             <p id="modalTitle">Account</p>

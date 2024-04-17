@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+body {
+  font-family: Nunito;
+}
+
+/* animation for arrow */
 @keyframes bounce {
   50% {
     transform: translateX(50%);
@@ -17,6 +24,7 @@
   animation: bounce 1s infinite;
 }
 
+/* animation for hero image */
 @keyframes blob {
   0% {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
@@ -32,8 +40,16 @@
   animation: blob 2s infinite;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+/* animation for account modal open */
+@keyframes modal-open {
+  0% {
+    transform: translate(50%, -50%) scale(0%);
+  }
+  100% {
+    transform: translate(0%, 0%) scale(100%);
+  }
+}
 
-body {
-  font-family: Nunito;
+.animate-modal-open {
+  animation: modal-open 0.5s;
 }
