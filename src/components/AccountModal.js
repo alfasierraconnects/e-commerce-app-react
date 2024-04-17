@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useAuth } from "../Appwrite/AuthContext";
+import { Link } from "react-router-dom";
 
 const AccountModal = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -38,8 +39,8 @@ const AccountModal = () => {
             </button>
           </div>
           <div className="px-6 py-4 flex flex-col gap-2">
-            <p>Your Orders</p>
-            <p>Your Addresses</p>
+            <Link to="/orders">Your Orders</Link>
+            <Link to="/address">Your Addresses</Link>
             <button
               className="border-2 border-fuchsia-600 hover:border-fuchsia-950 active:bg-fuchsia-500 px-6 py-1 rounded-full"
               onClick={() => logoutUser()}

@@ -4,13 +4,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Shop from "./pages/Shop";
 import ShopCategory from "./pages/ShopCategory";
 import Product from "./pages/Product";
-import LoginSignup from "./pages/LoginSignup";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 import Cart from "./pages/Cart";
+import AddressPage from "./pages/AddressPage";
+import Orders from "./pages/Orders";
 import Footer from "./components/Footer";
 import men_banner from "./Assets/banner_mens.png";
 import women_banner from "./Assets/banner_women.png";
 import kids_banner from "./Assets/banner_kids.png";
 import Checkout from "./pages/Checkout";
+import PrivateRoutes from "./context/PrivateRoutes";
 
 const App = () => {
   return (
@@ -34,9 +38,14 @@ const App = () => {
           <Route path="/product" element={<Product />}>
             <Route path=":productId" element={<Product />} />
           </Route>
-          <Route path="/login" element={<LoginSignup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route element={<PrivateRoutes />}>
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/address" element={<AddressPage />} />
+            <Route path="/orders" element={<Orders />} />
+          </Route>
         </Routes>
         <Footer />
       </BrowserRouter>
