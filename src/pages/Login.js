@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../Appwrite/AuthContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -25,6 +27,7 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center">
+      <ToastContainer />
       <form
         className="bg-white shadow-2xl rounded-md p-6 w-96"
         onSubmit={handleSubmit}

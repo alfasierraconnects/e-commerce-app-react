@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -16,6 +18,7 @@ const Cart = () => {
 
   return (
     <div className="container mx-auto p-4 my-20">
+      <ToastContainer autoClose={1500} />
       <div className="cart-items">
         <div className="cart-items-title grid grid-cols-12 gap-2 mb-4 font-semibold text-gray-600">
           <p className="col-span-2">Item</p>
@@ -51,7 +54,10 @@ const Cart = () => {
                   </p>
                   <button
                     className="col-span-1 text-start text-xl"
-                    onClick={() => removeFromCart(item.ItemId, item.size)}
+                    onClick={() => {
+                      removeFromCart(item.ItemId, item.size);
+                      toast.warn("Product removed from cart!");
+                    }}
                   >
                     <ion-icon name="close"></ion-icon>
                   </button>

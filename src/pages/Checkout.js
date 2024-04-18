@@ -44,6 +44,7 @@ const Checkout = () => {
             <input
               className="border-2 rounded p-1 font-semibold text-gray-700 col-span-2"
               placeholder="Street/ Location"
+              required
               type="text"
             />
             <input

@@ -16,7 +16,7 @@ const DatabaseContextProvider = (props) => {
 
     promise.then(
       function (response) {
-        console.log(response);
+        // console.log(response);
         setall_product(response.documents);
       },
       function (error) {

@@ -4,6 +4,7 @@ import { ID } from "appwrite";
 import { ShopContext } from "../context/ShopContext";
 import { databases } from "./appwriteConfig";
 import { Query } from "appwrite";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -28,7 +29,6 @@ export const AuthContextProvider = (props) => {
   };
 
   const loginUser = async (userInfo) => {
-    setLoading(true);
     try {
       await account.createEmailSession(userInfo.email, userInfo.password);
       const accountDetails = await account.get();
@@ -39,9 +39,7 @@ export const AuthContextProvider = (props) => {
         if (el.quantity !== 0) addToCart(el.ItemId, el.size, el.quantity);
       });
     } catch (error) {
-      console.error("Login error:", error);
-    } finally {
-      setLoading(false);
+      toast.error("Invalid Credentials! Enter Valid EmailId and Password.");
     }
   };
 
@@ -61,15 +59,15 @@ export const AuthContextProvider = (props) => {
 
       promise.then(
         function (response) {
-          console.log(response);
+          // console.log(response);
           setCartItems([]); // Success
         },
         function (error) {
-          console.log(error); // Failure
+          // console.log(error); // Failure
         }
       );
     } catch (error) {
-      console.error("Logout error:", error);
+      toast.error("Error logging out!");
     }
     setUser(null);
     setLoading(false);
@@ -78,14 +76,15 @@ export const AuthContextProvider = (props) => {
   const signupUser = async (userInfo) => {
     setLoading(true);
     try {
-      const accountResponse = await account.create(
+      // const accountResponse =
+      await account.create(
         ID.unique(),
         userInfo.email,
         userInfo.password,
         userInfo.name,
         userInfo.phone
       );
-      console.log(accountResponse);
+      toast("Created a new Account. Hurray!");
 
       await account.createEmailSession(userInfo.email, userInfo.password);
       const accountDetails = await account.get();
@@ -99,7 +98,7 @@ export const AuthContextProvider = (props) => {
         { userId: accountDetails.$id, "cart-items": cartItemsJson }
       );
     } catch (error) {
-      console.error("Signup error:", error);
+      toast.error("Unable to signup.");
     } finally {
       setLoading(false);
     }
@@ -110,13 +109,12 @@ export const AuthContextProvider = (props) => {
     try {
       const accountDetails = await account.get();
       setUser(accountDetails);
-
       const fetchedCartItems = await fetchCartItems(accountDetails.$id);
       fetchedCartItems.forEach((el) => {
         if (el.quantity !== 0) addToCart(el.ItemId, el.size, el.quantity);
       });
     } catch (error) {
-      console.log("Check user status error:", error);
+      // console.log("Check user status error:", error);
     } finally {
       setLoading(false);
     }

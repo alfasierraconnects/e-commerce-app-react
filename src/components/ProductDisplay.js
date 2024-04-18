@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import ImageDisplay from "./ImageDisplay";
 import { ShopContext } from "../context/ShopContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductDisplay = ({ product }) => {
   const {
@@ -93,11 +95,15 @@ const ProductDisplay = ({ product }) => {
 
           {/* Buy Button */}
           <button
-            onClick={() => addToCart(id, size)}
+            onClick={() => {
+              addToCart(id, size);
+              toast.success("Product added to cart!");
+            }}
             className="bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600 active:shadow-xl"
           >
             Add To Cart
           </button>
+          <ToastContainer autoClose={1500} />
 
           {/* Product Description */}
           <div className="my-6">
