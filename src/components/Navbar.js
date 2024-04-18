@@ -14,7 +14,13 @@ const Navbar = () => {
   return (
     <div className="text-gray-900 p-4 font-semibold text-lg">
       <div className="flex items-center justify-between">
-        <Link to="/" className="flex items-center">
+        <Link
+          to="/"
+          onClick={() => {
+            setMenu("shop");
+          }}
+          className="flex items-center"
+        >
           <img src={logo} alt="Logo" className="h-10 mr-2" />
           <p className="text-xl font-semibold">SHOPPERS</p>
         </Link>
