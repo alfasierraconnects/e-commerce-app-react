@@ -10,7 +10,7 @@ const Checkout = () => {
   const { subTotal, deliveryFee, total } = useContext(ShopContext);
   const { user } = useAuth();
   const { cartItems, setCartItems } = useContext(ShopContext);
-  const { createDocument } = useContext(DatabaseContext);
+  const { createNewOrder } = useContext(DatabaseContext);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -49,7 +49,7 @@ const Checkout = () => {
       "date-purchased": new Date().toISOString(),
     };
     console.log(document);
-    createDocument(document);
+    createNewOrder(document);
     setCartItems([]);
   };
 
