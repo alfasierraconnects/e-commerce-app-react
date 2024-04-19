@@ -9,7 +9,6 @@ import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 import AddressPage from "./pages/AddressPage";
 import Orders from "./pages/Orders";
-import OrderInformation from "./pages/OrderInformation";
 import Footer from "./components/Footer";
 import men_banner from "./Assets/banner_mens.png";
 import women_banner from "./Assets/banner_women.png";
@@ -45,9 +44,8 @@ const App = () => {
           <Route element={<PrivateRoutes />}>
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/address" element={<AddressPage />} />
+            <Route path="/orders" element={<Orders />} />
           </Route>
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/orderinfo" element={<OrderInformation />} />
         </Routes>
         <Footer />
       </BrowserRouter>

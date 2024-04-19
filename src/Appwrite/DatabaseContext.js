@@ -41,10 +41,33 @@ const DatabaseContextProvider = (props) => {
       function (response) {
         // console.log(response);
         toast.success("Your order is Successful.");
+        toast.success("We are redirecting you to Orders page shortly.");
       },
       function (error) {
         // console.log(error);
         toast.error("Sorry! we are unable to create your order.");
+      }
+    );
+  };
+
+  const deleteOrder = (documentId, userId) => {
+    // console.log(documentId);
+    // console.log(userId);
+    const promise = databases.deleteDocument(
+      "661d505639bdd3d339b0",
+      "661f83b30614ff9e22d6",
+      documentId
+    );
+
+    promise.then(
+      function (response) {
+        // console.log(response);
+        toast.warn("Your order is cancelled.");
+        fetchOrders(userId);
+      },
+      function (error) {
+        // console.log(error);
+        toast.error("Sorry! we are unable to cancel your order.");
       }
     );
   };
@@ -77,6 +100,7 @@ const DatabaseContextProvider = (props) => {
     all_product,
     createNewOrder,
     fetchOrders,
+    deleteOrder,
     orders,
     setOrders,
   };

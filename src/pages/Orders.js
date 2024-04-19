@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
 import { DatabaseContext } from "../Appwrite/DatabaseContext";
 import { useAuth } from "../Appwrite/AuthContext";
+import OrderInformation from "../components/OrderInformation";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Orders = () => {
-  const navigate = useNavigate();
   const { fetchOrders, orders } = useContext(DatabaseContext);
   const { user } = useAuth();
   const userId = user ? user.$id : "nouser";
@@ -18,6 +19,8 @@ const Orders = () => {
   const formattedOrders = useMemo(
     () =>
       orders.map((order) => ({
+        userId: order.userId,
+        documentId: order.$id,
         orderId: order.orderId,
         purchasedItems: JSON.parse(order["purchased-items"]),
         address: JSON.parse(order.address),
@@ -31,33 +34,12 @@ const Orders = () => {
   return (
     <div className="container my-10 mx-auto">
       <h1 className="font-semibold text-2xl mb-10">Your Orders</h1>
+      <ToastContainer />
       {formattedOrders.map((formattedOrder) => (
-        <div
-          className="flex flex-col md:flex-row gap-1 md:gap-3 items-start md:justify-between p-6 shadow-md border md:items-center rounded-md mb-6"
+        <OrderInformation
           key={formattedOrder.orderId}
-        >
-          <p>
-            <strong>Order Id:</strong> {formattedOrder.orderId}
-          </p>
-          <p>
-            <strong>Ordered On:</strong> {formattedOrder.datePurchased}
-          </p>
-          <p className="whitespace-nowrap">
-            <strong>
-              &#8377; {formattedOrder.priceBreakup.total.toFixed(2)}
-            </strong>
-          </p>
-          <button
-            onClick={() =>
-              navigate(`/orderinfo`, {
-                state: { formattedOrder },
-              })
-            }
-            className="whitespace-nowrap border-orange-400 hover:border-orange-600 active:bg-orange-200 rounded-full py-1 px-4 border-2 self-center"
-          >
-            More Info
-          </button>
-        </div>
+          formattedOrder={formattedOrder}
+        />
       ))}
     </div>
   );

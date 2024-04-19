@@ -2,11 +2,13 @@ import React, { useContext, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 import { useAuth } from "../Appwrite/AuthContext";
 import { DatabaseContext } from "../Appwrite/DatabaseContext";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Checkout = () => {
   const uuid = require("uuid");
+  const navigate = useNavigate();
   const { subTotal, deliveryFee, total } = useContext(ShopContext);
   const { user } = useAuth();
   const { cartItems, setCartItems } = useContext(ShopContext);
@@ -51,6 +53,9 @@ const Checkout = () => {
     console.log(document);
     createNewOrder(document);
     setCartItems([]);
+    setTimeout(() => {
+      navigate("/orders");
+    }, 3000);
   };
 
   const isFormValid = () => {
