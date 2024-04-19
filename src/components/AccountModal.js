@@ -40,7 +40,6 @@ const AccountModal = () => {
           </div>
           <div className="px-6 py-4 flex flex-col gap-2">
             <Link to="/orders">Your Orders</Link>
-            <Link to="/address">Your Addresses</Link>
             <button
               className="border-2 border-fuchsia-600 hover:border-fuchsia-950 active:bg-fuchsia-500 px-6 py-1 rounded-full"
               onClick={() => logoutUser()}

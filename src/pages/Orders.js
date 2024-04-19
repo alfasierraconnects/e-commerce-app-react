@@ -9,7 +9,7 @@ const Orders = () => {
   const { fetchOrders, orders } = useContext(DatabaseContext);
   const { user } = useAuth();
   const userId = user ? user.$id : "nouser";
-  console.log(orders);
+  // console.log(orders);
 
   useEffect(() => {
     fetchOrders(userId);

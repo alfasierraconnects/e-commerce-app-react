@@ -85,7 +85,8 @@ const DatabaseContextProvider = (props) => {
         // console.log(response);
       },
       function (error) {
-        console.log(error);
+        // console.log(error);
+        setOrders([]);
         toast.error("Unable to fetch your order!");
       }
     );

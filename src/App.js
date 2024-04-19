@@ -7,7 +7,6 @@ import Product from "./pages/Product";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
-import AddressPage from "./pages/AddressPage";
 import Orders from "./pages/Orders";
 import Footer from "./components/Footer";
 import men_banner from "./Assets/banner_mens.png";
@@ -43,7 +42,6 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
           <Route element={<PrivateRoutes />}>
             <Route path="/checkout" element={<Checkout />} />
-            <Route path="/address" element={<AddressPage />} />
             <Route path="/orders" element={<Orders />} />
           </Route>
         </Routes>

@@ -50,12 +50,12 @@ const Checkout = () => {
       transactionId: uuid.v4(),
       "date-purchased": new Date().toISOString(),
     };
-    console.log(document);
+    // console.log(document);
     createNewOrder(document);
     setCartItems([]);
     setTimeout(() => {
       navigate("/orders");
-    }, 3000);
+    }, 5000);
   };
 
   const isFormValid = () => {

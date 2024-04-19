@@ -4,7 +4,7 @@ import hero_image from "../Assets/hero_image.png";
 const Hero = () => {
   return (
     <div className="bg-gradient-to-b from-white to-fuchsia-300 ">
-      <div className=" md:w-[85%] m-auto flex justify-between">
+      <div className=" md:w-[85%] m-auto md:flex justify-between">
         <div className="flex flex-col justify-center items-start w-[40%] p-8 gap-10">
           <h2 className="font-semibold text-3xl">NEW ARRIVALS ONLY</h2>
           <p className="font-semibold mb-8 text-7xl">

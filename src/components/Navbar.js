@@ -12,7 +12,7 @@ const Navbar = () => {
   const { user } = useAuth();
 
   return (
-    <div className="text-gray-900 p-4 font-semibold text-lg">
+    <div className="text-gray-900 p-1 sm:p-4 font-semibold text-lg">
       <div className="flex items-center justify-between">
         <Link
           to="/"
@@ -72,7 +72,7 @@ const Navbar = () => {
             </Link>
           </div>
         </div>
-        <div className="flex items-center space-x-4 relative">
+        <div className="flex items-center gap-2 sm:gap-4 relative">
           {user !== null && <AccountModal />}
           {user === null && (
             <Link
