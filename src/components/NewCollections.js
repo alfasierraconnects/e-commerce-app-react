@@ -6,7 +6,7 @@ import { ShopContext } from "../context/ShopContext";
 const NewCollections = () => {
   const { all_product } = useContext(ShopContext);
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div id="new-collections" className="container mx-auto px-4  xl:px-20 py-8">
       <h1 className="text-3xl text-center font-semibold mb-4">
         NEW COLLECTIONS
       </h1>

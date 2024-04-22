@@ -17,7 +17,7 @@ const Cart = () => {
   } = useContext(ShopContext);
 
   return (
-    <div className="container mx-auto p-4 my-20">
+    <div className="container mx-auto xl:px-20 p-4 my-20">
       <ToastContainer autoClose={1500} />
       <div className="cart-items">
         <div className="cart-items-title grid grid-cols-12 gap-2 mb-4 font-semibold text-gray-600">

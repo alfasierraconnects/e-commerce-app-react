@@ -63,7 +63,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container xl:px-20 mx-auto">
       <ToastContainer />
       <div className="flex justify-between my-20">
         <div className="w-1/2">

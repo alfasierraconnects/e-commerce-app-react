@@ -12,7 +12,7 @@ const RelatedProduct = ({ category }) => {
     .slice(0, 4);
 
   return (
-    <div className="container mx-auto px-4 pt-8 pb-16">
+    <div className="container mx-auto px-4 xl:px-20 pt-8 pb-16">
       <h1 className="text-3xl text-center font-semibold mb-8">
         RELATED PRODUCTS
       </h1>

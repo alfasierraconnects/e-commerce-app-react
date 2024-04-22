@@ -6,7 +6,7 @@ import { ShopContext } from "../context/ShopContext";
 const Popular = () => {
   const { all_product } = useContext(ShopContext);
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 xl:px-20 py-16">
       <h1 className="text-3xl text-center font-semibold mb-4">
         POPULAR IN WOMEN
       </h1>

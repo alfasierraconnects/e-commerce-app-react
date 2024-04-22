@@ -32,7 +32,7 @@ const Orders = () => {
   );
 
   return (
-    <div className="container my-10 mx-auto">
+    <div className="container xl:px-20 my-10 mx-auto">
       <h1 className="font-semibold text-2xl mb-10">Your Orders</h1>
       <ToastContainer />
       {formattedOrders.map((formattedOrder) => (
